@@ -2,7 +2,7 @@
 //  AddOrderViewController.swift
 //  SandiCoffee
 //
-//  Created by OVO on 15/07/19.
+//  Created by Samuel Lim on 15/07/19.
 //  Copyright © 2019 Samuel Lim. All rights reserved.
 //
 
