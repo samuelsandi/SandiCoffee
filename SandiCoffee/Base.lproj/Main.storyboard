@@ -73,6 +73,21 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ANq-oY-QAF">
                                 <rect key="frame" x="0.0" y="88" width="414" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CoffeeTypeTableViewCell" id="EHo-ZA-ea5">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EHo-ZA-ea5" id="EOa-Cy-w5x">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VcM-Yl-ucK" id="toW-Ok-18j"/>
+                                    <outlet property="delegate" destination="VcM-Yl-ucK" id="kV7-Dm-ycb"/>
+                                </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JjX-X7-kbj">
                                 <rect key="frame" x="107" y="630" width="200" height="30"/>
@@ -92,28 +107,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PRT-bn-kta">
-                                <rect key="frame" x="111.5" y="559" width="191" height="29"/>
-                                <segments>
-                                    <segment title="Small"/>
-                                    <segment title="Medium"/>
-                                    <segment title="Large"/>
-                                </segments>
-                                <color key="tintColor" red="0.29493199479999999" green="0.14488971240000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ANq-oY-QAF" firstAttribute="width" secondItem="AMB-Zl-hdd" secondAttribute="width" id="3Gj-eK-B6P"/>
-                            <constraint firstItem="PRT-bn-kta" firstAttribute="centerX" secondItem="AMB-Zl-hdd" secondAttribute="centerX" id="Cis-Zw-QUD"/>
                             <constraint firstItem="JjX-X7-kbj" firstAttribute="centerX" secondItem="AMB-Zl-hdd" secondAttribute="centerX" id="DX4-j2-Fv1"/>
-                            <constraint firstItem="PRT-bn-kta" firstAttribute="top" secondItem="ANq-oY-QAF" secondAttribute="bottom" constant="23" id="G9E-GJ-vHy"/>
                             <constraint firstItem="ANq-oY-QAF" firstAttribute="leading" secondItem="LoL-No-hZx" secondAttribute="leading" id="Mmv-Zx-C3M"/>
-                            <constraint firstItem="JjX-X7-kbj" firstAttribute="top" secondItem="PRT-bn-kta" secondAttribute="bottom" constant="43" id="U9N-M1-qIc"/>
                             <constraint firstItem="VGk-9q-Pst" firstAttribute="centerX" secondItem="AMB-Zl-hdd" secondAttribute="centerX" id="Zbo-nc-Nyg"/>
+                            <constraint firstItem="JjX-X7-kbj" firstAttribute="top" secondItem="ANq-oY-QAF" secondAttribute="bottom" constant="94" id="emL-UZ-APd"/>
                             <constraint firstItem="VGk-9q-Pst" firstAttribute="top" secondItem="JjX-X7-kbj" secondAttribute="bottom" constant="19" id="hvh-gx-RaS"/>
                             <constraint firstItem="ANq-oY-QAF" firstAttribute="height" secondItem="AMB-Zl-hdd" secondAttribute="height" multiplier="0.5" id="qCu-jl-4XR"/>
-                            <constraint firstItem="JjX-X7-kbj" firstAttribute="centerX" secondItem="PRT-bn-kta" secondAttribute="centerX" id="u72-9t-XQg"/>
                             <constraint firstItem="JjX-X7-kbj" firstAttribute="leading" secondItem="VGk-9q-Pst" secondAttribute="leading" id="w20-Lx-nDH"/>
                             <constraint firstItem="ANq-oY-QAF" firstAttribute="top" secondItem="LoL-No-hZx" secondAttribute="top" id="wVp-Fu-8UJ"/>
                         </constraints>
@@ -127,6 +130,9 @@
                             <color key="tintColor" red="1" green="0.92302943790000003" blue="0.02870926888" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="ANq-oY-QAF" id="VCR-Be-vUI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZB-rH-rG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,6 +16,7 @@
 		940B673722DC7962002E4D0B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B673622DC7962002E4D0B /* WebService.swift */; };
 		940B673A22DD7A20002E4D0B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B673922DD7A20002E4D0B /* Order.swift */; };
 		940B673F22DD9B06002E4D0B /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B673E22DD9B06002E4D0B /* OrderViewModel.swift */; };
+		940B674122DDA799002E4D0B /* NewOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B674022DDA799002E4D0B /* NewOrderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		940B673622DC7962002E4D0B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		940B673922DD7A20002E4D0B /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		940B673E22DD9B06002E4D0B /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		940B674022DDA799002E4D0B /* NewOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				940B673E22DD9B06002E4D0B /* OrderViewModel.swift */,
+				940B674022DDA799002E4D0B /* NewOrderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				940B673A22DD7A20002E4D0B /* Order.swift in Sources */,
 				940B673F22DD9B06002E4D0B /* OrderViewModel.swift in Sources */,
 				940B673722DC7962002E4D0B /* WebService.swift in Sources */,
+				940B674122DDA799002E4D0B /* NewOrderViewModel.swift in Sources */,
 				940B673422DC5CA7002E4D0B /* AddOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
