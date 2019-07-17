@@ -8,10 +8,18 @@
 
 import UIKit
 
+protocol AddCoffeeOrderDelegate {
+    func addCoffeeOrderViewControllerDidSave(order: Order, controller: UIViewController)
+    func addCoffeeOrderViewControllerDidClose(controller: UIViewController)
+}
+
 class AddOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var delegate: AddCoffeeOrderDelegate?
     
     private var newOrderVM = NewOrderViewModel()
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     private var coffeeSizeSegmentedControl: UISegmentedControl!
 
     override func viewDidLoad() {
@@ -44,5 +52,41 @@ class AddOrderViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "CoffeeTypeTableViewCell", for: indexPath)
         cell.textLabel?.text = self.newOrderVM.types[indexPath.row]
         return cell
+    }
+    
+    @IBAction func saveOrderDidTapped() {
+        let name = self.nameTextField.text
+        let email = self.emailTextField.text
+        let selectedSize = self.coffeeSizeSegmentedControl.titleForSegment(at: self.coffeeSizeSegmentedControl.selectedSegmentIndex)
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            fatalError("Coffee has not been selected!")
+        }
+        
+        self.newOrderVM.name = name
+        self.newOrderVM.email = email
+        self.newOrderVM.selectedSize = selectedSize
+        self.newOrderVM.selectedType = self.newOrderVM.types[indexPath.row]
+        
+        WebService().load(resource: Order.create(self.newOrderVM)){ result in
+            switch result {
+                case .success(let order):
+                    print(order)
+                    if let order = order, let delegate = self.delegate {
+                        DispatchQueue.main.async {
+                            delegate.addCoffeeOrderViewControllerDidSave(order: order, controller: self)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+            }
+        }
+    }
+    
+    @IBAction func closeButtonDidTapped() {
+        if let delegate = self.delegate {
+            DispatchQueue.main.async {
+                delegate.addCoffeeOrderViewControllerDidClose(controller: self)
+            }
+        }
     }
 }

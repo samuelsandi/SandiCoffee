@@ -125,12 +125,20 @@
                     <navigationItem key="navigationItem" title="Add New Order" id="L2j-ud-bkO">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="Wgn-lc-V7G">
                             <color key="tintColor" red="1" green="0.92302943790000003" blue="0.02870926888" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="closeButtonDidTapped" destination="VcM-Yl-ucK" id="p1y-bW-Oph"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="HHF-eH-x7A">
                             <color key="tintColor" red="1" green="0.92302943790000003" blue="0.02870926888" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="saveOrderDidTapped" destination="VcM-Yl-ucK" id="KJz-0y-26Y"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailTextField" destination="VGk-9q-Pst" id="lau-4N-4Rk"/>
+                        <outlet property="nameTextField" destination="JjX-X7-kbj" id="gau-V3-C2E"/>
                         <outlet property="tableView" destination="ANq-oY-QAF" id="VCR-Be-vUI"/>
                     </connections>
                 </viewController>

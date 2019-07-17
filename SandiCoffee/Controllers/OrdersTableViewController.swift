@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrdersTableViewController: UITableViewController {
+class OrdersTableViewController: UITableViewController, AddCoffeeOrderDelegate {
     
     var orderListVM = OrderListViewModel()
     
@@ -17,18 +17,23 @@ class OrdersTableViewController: UITableViewController {
         populateOrders()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationController = segue.destination as? UINavigationController,
+            let addCoffeeOrderVC = navigationController.viewControllers.first as? AddOrderViewController else {
+            fatalError("Error performing segue!")
+        }
+        
+        addCoffeeOrderVC.delegate = self
+    }
+    
     private func populateOrders(){
         
-        guard let ordersURL = URL(string: "https://guarded-retreat-82533.herokuapp.com/orders") else {
-            fatalError("URL was incorrect")
-        }
-        let resource = Resource<[Order]>(url:ordersURL)
-        WebService().load(resource: resource) { result in
+        
+        WebService().load(resource: Order.all) { [weak self] result in
             switch result {
                 case .success(let orders):
-                    print(orders)
-                    self.orderListVM.orders = orders.map(OrderViewModel.init)
-                    self.tableView.reloadData()
+                    self?.orderListVM.orders = orders.map(OrderViewModel.init)
+                    self?.tableView.reloadData()
                 case .failure(let error):
                     print(error)
             }
@@ -49,5 +54,16 @@ class OrdersTableViewController: UITableViewController {
         cell.textLabel?.text = vm.type
         cell.detailTextLabel?.text = vm.size
         return cell
+    }
+    
+    func addCoffeeOrderViewControllerDidClose(controller: UIViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func addCoffeeOrderViewControllerDidSave(order: Order, controller: UIViewController) {
+        controller.dismiss(animated: true, completion: nil)
+        let orderVM = OrderViewModel(order: order)
+        self.orderListVM.orders.append(orderVM)
+        self.tableView.insertRows(at: [IndexPath.init(row: self.orderListVM.orders.count - 1, section: 0)], with: .automatic)
     }
 }
