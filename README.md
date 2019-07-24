@@ -1,6 +1,6 @@
 # SandiCoffee
 
-SandiNews is a really simple coffee ordering app for iOS. It can receive your order, display it on order list page, and store your order using a web service so other people can see your orders
+SandiNews is a very simple coffee ordering app for iOS. It can receive your order, display it on order list page, and store your order using a web service so other people can see your orders
 
 ## Build Environment
 
